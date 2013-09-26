@@ -113,7 +113,7 @@ class AboutWindow(wx.Frame):
 		url = wx.HyperlinkCtrl(self, -1, "foo.li systeme + software", "http://www.foo.li")
 		url2 = wx.HyperlinkCtrl(self, -1, "foo.li ticket system website", "http://support.foo.li")
 		url3 = wx.HyperlinkCtrl(self, -1, "foo.li ticket system email", "mailto:ticketing@foo.li")
-		url4 = wx.HyperlinkCtrl(self, -1, "code.google.com/p/gitso", "http://code.google.com/p/gitso")
+		url4 = wx.HyperlinkCtrl(self, -1, "source code", "http://code.google.com/p/gitso")
 		
 		data = open(os.path.join(paths['main'], 'icon.png'), "rb").read()
 		stream = cStringIO.StringIO(data)
@@ -135,7 +135,7 @@ class AboutWindow(wx.Frame):
 		info_sizer.Add(text1, 0, wx.ALIGN_CENTER | wx.ALL, 7);
 		info_sizer.Add(text2, 0, wx.ALIGN_CENTER | wx.ALL, 3);
 		info_sizer.Add(text3, 0, wx.ALIGN_CENTER | wx.ALL, 3);
-		info_sizer.Add(url, 0, wx.ALIGN_CENTER | wx.ALL, 3);
+		info_sizer.Add(url, 0, wx.ALIGN_CENTER | wx.ALL, 1);
 		info_sizer.Add(url2, 0, wx.ALIGN_CENTER | wx.ALL, 1);
 		info_sizer.Add(url3, 0, wx.ALIGN_CENTER | wx.ALL, 1);
 		info_sizer.Add(url4, 0, wx.ALIGN_CENTER | wx.ALL, 1);

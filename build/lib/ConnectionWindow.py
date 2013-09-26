@@ -65,10 +65,10 @@ class ConnectionWindow(wx.Frame):
 		self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
 		
 		if sys.platform == 'win32':
-			icon = wx.Icon(os.path.join(self.paths['main'], 'icon.ico'), wx.BITMAP_TYPE_ICO)
+			icon = wx.Icon(os.path.join(self.paths['main'], 'foocube.ico'), wx.BITMAP_TYPE_ICO)
 			self.SetBackgroundColour(wx.Colour(236,233,216))
 		else:
-			icon = wx.Icon(os.path.join(self.paths['main'], 'icon.ico'), wx.BITMAP_TYPE_ICO)
+			icon = wx.Icon(os.path.join(self.paths['main'], 'foocube.ico'), wx.BITMAP_TYPE_ICO)
 		self.SetIcon(icon)
 		
 		#Buttons
