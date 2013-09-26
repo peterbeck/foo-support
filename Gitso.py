@@ -55,6 +55,6 @@ import ConnectionWindow, ArgsParser
 if __name__ == "__main__":
 	app = wx.PySimpleApp()
 	args = ArgsParser.ArgsParser()
-	ConnectionWindow.ConnectionWindow(None, -1, "Gitso", args.GetPaths())
+	ConnectionWindow.ConnectionWindow(None, -1, "foo.li support", args.GetPaths())
 	app.MainLoop()
 	del app
