@@ -32,7 +32,7 @@ InstallDirRegKey HKLM "Software\Gitso" "Install_Dir"
 ;--------------------------------
 ; Version Information
   VIProductVersion "0.6.0.0"
-  VIAddVersionKey "ProductName" "foo.li Fernwartung - Gitso"
+  VIAddVersionKey "ProductName" "foo.li support - Gitso"
   VIAddVersionKey "Comments" "Gitso is to support others"
   VIAddVersionKey "CompanyName" "http://code.google.com/p/gitso"
   VIAddVersionKey "LegalCopyright" "GPL 3"
