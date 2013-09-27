@@ -45,12 +45,27 @@ class Processes:
 			import time
 			time.sleep(3)
 		elif sys.platform == 'win32':
+			#disable uac messages while connected - run as administrator on Windows 7
+			import platform
+			wver = platform.version()
+			if wver > '5.2':
+				import _winreg
+				try:
+					x = _winreg.ConnectRegistry(None, _winreg.HKEY_LOCAL_MACHINE)
+					y = _winreg.OpenKey(x, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", 0, _winreg.KEY_ALL_ACCESS)
+					_winreg.SetValueEx(y, "ConsentPromptBehaviorAdmin", 0, _winreg.REG_DWORD, 0)
+					_winreg.CloseKey(y)
+					_winreg.CloseKey(x)
+				except:
+					print 'error - not running as admin ?'
+			#return
+			 
 			import subprocess
-                        self.returnPID = subprocess.Popen(['WinVNC.exe', '-run'])
+			self.returnPID = subprocess.Popen(['WinVNC.exe', '-run'])
 			print "Launched WinVNC.exe, waiting to run -connect command..."
 			import time
 			#timeout von 3 auf 5 hochgesetzt, scheint besser zu klappen mit 2.7
-			time.sleep(3)
+			time.sleep(5)
 
 			#tightvnc 2.7 (umbenannt) integriert, da besseres handling mit win7	/ UAC
 			#controlapp-parameter ergaenzt
@@ -100,6 +115,22 @@ class Processes:
 		if self.returnPID != 0:
 			print "Processes.KillPID(" + str(self.returnPID) + ")"
 			if sys.platform == 'win32':
+				import platform
+				wver = platform.version()
+				if wver > '5.2':
+					#re-enable UAC Messages on exit
+					import _winreg
+					try:
+						x = _winreg.ConnectRegistry(None, _winreg.HKEY_LOCAL_MACHINE)
+						y = _winreg.OpenKey(x, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", 0, _winreg.KEY_ALL_ACCESS)
+						_winreg.SetValueEx(y, "ConsentPromptBehaviorAdmin", 0, _winreg.REG_DWORD, 2)
+						_winreg.CloseKey(y)
+						_winreg.CloseKey(x)
+					except:
+						print 'could not restore UAC dialog'
+				#return
+				
+
 				import win32api
 				PROCESS_TERMINATE = 1
 				handle = win32api.OpenProcess(PROCESS_TERMINATE, False, self.returnPID.pid)
