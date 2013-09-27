@@ -9,3 +9,10 @@ and replaced tightvnc win32 with newer edition.
 original sources for gitso:
 http://code.google.com/p/gitso/
 
+
+modifications (so far...):
+* changed icons (foo.li), installer files/names
+* netstat.cmd /sed.exe included (german windows xp)
+* replaced tighvnc with version 2.7 (no disconnect on UAC dialog)
+* 7Zip-Batch and SFX-Config for non-install version
+
